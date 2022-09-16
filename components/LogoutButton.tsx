@@ -2,28 +2,6 @@ import { Button } from "@mui/material"
 import { useSetRecoilState } from "recoil"
 import { userDataAtom } from "../atoms/userAtoms"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const LogoutButton = () => {
 
     const setUserData = useSetRecoilState(userDataAtom)
