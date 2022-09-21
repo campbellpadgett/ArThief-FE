@@ -6,12 +6,13 @@ import CardMedia from '@mui/material/CardMedia';
 import LikeButton from "../../components/LikeButton";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { NextPage } from "next";
+import {api} from '../../utils/keys'
 
 const rowSX = {
     padding: '2px',
-    borderTop: '5px solid black'
+    borderTop: '5px solid black' 
 }
 
 const renderSource = (source: string, Abb: string) => {
@@ -42,7 +43,7 @@ const likeHandler = async (likedStatus: boolean, setStatus: Dispatch<SetStateAct
             likeStatus: !likedStatus
         }
 
-        const res = await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/like`, {
+        const res = await fetch(`http://${api}/like`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -60,7 +61,7 @@ const Artwork: NextPage = () => {
     const likeData: LikeData = {itemID: artworkID, userID: user?.ID, likeStatus: false}
 
     const likeReq = async (ld: LikeData): Promise<LikeRequest | undefined> => {
-        const res = await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/likes`, {
+        const res = await fetch(`http://${api}/likes`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},

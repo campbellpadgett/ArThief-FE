@@ -20,7 +20,7 @@ import internal from "stream"
 
 
 
-
+import {api} from './keys'
 
 export interface UserData {
     ID: number 
@@ -28,12 +28,12 @@ export interface UserData {
     email: string
     password : string 
     CreatedAt: string
-    UpdatedAt: string
+    UpdatedAt: string 
     DeletedAt: null | string
 }
 
 export const getUser = async (): Promise<UserData | null> => {
-    const res = await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
+    const res = await fetch(`http://${api}/user`, {
             method: 'GET',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},

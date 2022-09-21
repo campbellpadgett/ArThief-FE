@@ -4,6 +4,7 @@ import {TextField} from '@material-ui/core';
 import Grid from '@mui/material/Unstable_Grid2';
 import { debounce } from 'lodash';
 import List from '../components/List'
+import {api} from '../utils/keys'
 
 
 export type SearchResults = {
@@ -15,16 +16,17 @@ export type SearchResults = {
     Source: string
     Abb: string
     IMG: string
-    IMG_S: string | null
+    IMG_S: string | null 
 }[]
 
 const Search: NextPage = () => {
+    console.log('API from process.env', api)
 
     const [input, setInput] = useState('Gogh')
     const [results, setResults] = useState<SearchResults | undefined>(undefined)
 
     const fetchData = async (input: string) => {
-        await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/search/${input}`).then(async res => {
+        await fetch(`http://${api}/search/${input}`).then(async res => {
                 const response: SearchResults = await res.json()
     
                 setResults(response)

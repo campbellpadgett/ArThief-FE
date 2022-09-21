@@ -5,10 +5,11 @@ import Router from 'next/router';
 import { useSetRecoilState } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
+import {api} from '../../utils/keys'
 
 interface LoginData {
     password: null | string
-    username: null | string
+    username: null | string 
 }
 
 const LoginForm = () => {
@@ -34,7 +35,7 @@ const LoginForm = () => {
     const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const res = await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
+        const res = await fetch(`http://${api}/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -45,7 +46,7 @@ const LoginForm = () => {
 
         if (res.status === 200) {
             setUserData(userData)
-            Router.push(`http://${process.env.NEXT_PUBLIC_CLIENT_URL}/search`)
+            Router.push(`http://${api}/search`)
         }
         if (res.status === 404 || res.status === 400) setError(true)
     }

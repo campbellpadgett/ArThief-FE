@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { debounce } from 'lodash';
 import { TakenUsernames } from '../../pages/sign-up';
 import Router from 'next/router';
+import {api} from '../../utils/keys'
 
 interface FormProps {
     usernames: TakenUsernames
@@ -12,7 +13,7 @@ interface FormProps {
 interface SignUpData {
     email: null | string
     password: null | string
-    username: null | string
+    username: null | string 
 }
 
 const SignUpForm = (props: FormProps) => {
@@ -67,13 +68,13 @@ const SignUpForm = (props: FormProps) => {
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/sign-up`, {
+        await fetch(`http://${api}/sign-up`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         })
 
-        Router.push(`http://${process.env.NEXT_PUBLIC_CLIENT_URL}/login`)
+        Router.push(`http://${api}/login`)
     }
 
     return (

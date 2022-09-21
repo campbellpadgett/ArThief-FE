@@ -3,12 +3,13 @@ import Grid from '@mui/material/Unstable_Grid2';
 import SignUpForm from '../components/forms/SignUpForm';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
+import {api} from '../utils/keys'
 
 
 
 
 export interface TakenUsernames { 
-    [key: string]: boolean
+    [key: string]: boolean 
 }
 
 const SignUp: NextPage = () => {
@@ -16,7 +17,7 @@ const SignUp: NextPage = () => {
     const [usernames, setUsernames] = useState<TakenUsernames>({})
 
     const fetchUsernameData = async () => {
-        await fetch(`http://${process.env.NEXT_PUBLIC_SERVER_URL}/usernames`).then(async res => {
+        await fetch(`http://${api}/usernames`).then(async res => {
                 const response: TakenUsernames = await res.json()
                 setUsernames(response)
         })
