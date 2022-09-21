@@ -49,8 +49,6 @@ const likeHandler = async (likedStatus: boolean, setStatus: Dispatch<SetStateAct
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(ld)
         })
-
-        // console.log(res.json())
     }
 
 const Artwork: NextPage = () => {

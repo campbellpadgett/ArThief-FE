@@ -9,7 +9,6 @@ interface ListProps {
 }
 
 const List = (props: ListProps) => {
-    console.log(props)
 
     if (props.results === undefined ) return <ul></ul>
 

@@ -20,7 +20,6 @@ export type SearchResults = {
 }[]
 
 const Search: NextPage = () => {
-    console.log('API from process.env', api)
 
     const [input, setInput] = useState('Gogh')
     const [results, setResults] = useState<SearchResults | undefined>(undefined)
