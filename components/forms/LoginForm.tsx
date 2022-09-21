@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { useSetRecoilState } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
-import {api} from '../../utils/keys'
+import {api, local} from '../../utils/keys'
 
 interface LoginData {
     password: null | string
@@ -46,7 +46,7 @@ const LoginForm = () => {
 
         if (res.status === 200) {
             setUserData(userData)
-            Router.push(`http://${api}/search`)
+            Router.push(`http://${local}/search`)
         }
         if (res.status === 404 || res.status === 400) setError(true)
     }
