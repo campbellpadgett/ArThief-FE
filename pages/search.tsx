@@ -4,6 +4,7 @@ import {TextField} from '@material-ui/core';
 import Grid from '@mui/material/Unstable_Grid2';
 import { debounce } from 'lodash';
 import List from '../components/List'
+import Loading from '../components/Loading';
 import {api} from '../utils/keys'
 
 
@@ -23,12 +24,14 @@ const Search: NextPage = () => {
 
     const [input, setInput] = useState('Gogh')
     const [results, setResults] = useState<SearchResults | undefined>(undefined)
+    const [sent, setSent] = useState(false)
 
     const fetchData = async (input: string) => {
         await fetch(`http://${api}/search/${input}`).then(async res => {
                 const response: SearchResults = await res.json()
     
                 setResults(response)
+                setSent(true)
         })
     }
 
@@ -61,7 +64,7 @@ const Search: NextPage = () => {
                 <Grid container>
                     <Grid md={1}></Grid>
                     <Grid md={10}>
-                        <List input={input} results={results} />
+                       {results && sent ? <List input={input} results={results} /> : <Loading />}
                     </Grid>
                     <Grid md={1}></Grid>
                 </Grid>

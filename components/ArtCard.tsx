@@ -22,7 +22,7 @@ interface ArtCardProps {
     result: SearchResult
 }
 
-export const provideImage = (result: SearchResult): string => {
+const provideImage = (result: SearchResult): string => {
     if (result.IMG_S !== null && result.IMG_S !== '') return result.IMG_S
 
     return result.IMG
@@ -41,7 +41,7 @@ const ArtCard = (props: ArtCardProps) => {
                                 <CardMedia
                                 component="img"
                                 // height="140"
-                                image={provideImage(props.result)}
+                                src={provideImage(props.result)}
                                 alt="image not found"
                                 />
 
