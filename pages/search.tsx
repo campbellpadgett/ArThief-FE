@@ -20,13 +20,19 @@ export type SearchResults = {
     IMG_S: string | null 
 }[]
 
-const Search: NextPage = () => {
+const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) => {
 
-    const [input, setInput] = useState('Gogh')
+    const [input, setInput] = useState<string | null>(null)
     const [results, setResults] = useState<SearchResults | undefined>(undefined)
     const [sent, setSent] = useState(false)
 
-    const fetchData = async (input: string) => {
+    const fetchData = async (input: string | null) => {
+        if (input === null) {
+            setResults(data)
+            setSent(true)
+            return 
+        }
+
         await fetch(`http://${api}/search/${input}`).then(async res => {
                 const response: SearchResults = await res.json()
     
@@ -64,7 +70,7 @@ const Search: NextPage = () => {
                 <Grid container>
                     <Grid md={1}></Grid>
                     <Grid md={10}>
-                       {results && sent ? <List input={input} results={results} /> : <Loading />}
+                       {results && sent ? <List results={results} /> : <Loading />}
                     </Grid>
                     <Grid md={1}></Grid>
                 </Grid>
@@ -75,3 +81,14 @@ const Search: NextPage = () => {
 }
 
 export default Search
+
+export async function getStaticProps() {
+    const data = await fetch(`http://${api}/search/van%20gogh`).then(async res => {
+                const response: SearchResults = await res.json()
+                return response
+        })
+
+    return {
+        props: { data }
+    }
+}

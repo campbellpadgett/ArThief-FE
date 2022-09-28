@@ -4,7 +4,6 @@ import ArtCard from '../components/ArtCard';
 import { type SearchResults } from '../pages/search';
 
 interface ListProps {
-    input: string
     results: SearchResults | undefined
 }
 
