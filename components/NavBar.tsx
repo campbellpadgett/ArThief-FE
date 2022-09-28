@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil"
 import { userDataAtom } from "../atoms/userAtoms"
 import { getUser } from "../utils/checkUser"
 import LogoutButton from "./LogoutButton"
+import styles from '../styles/Navbar.module.css'
 
 
 
@@ -29,23 +30,48 @@ const NavBar = () => {
     }, [userData])
 
     return (
-        <div>
-            {userData 
+        <ul className={styles.ul_nav}>
+
+            {!userData 
+            ?
+                <li className={styles.li_nav}>
+                    <Link href={'/sign-up'}>
+                        <Button variant='outlined' color='success'>Sign Up</Button>
+                    </Link>
+                </li>
+            : null}
+
+            <li className={styles.li_nav}>
+                {userData 
                 ? 
                 <LogoutButton />
                 : 
                 <Link href={'/login'}>
-                    <Button variant='contained' color='primary'>Login</Button> 
+                    <Button variant='outlined' color='inherit'>Login</Button> 
                 </Link> }
+            </li>
 
+            <li className={styles.li_nav}>
+                <Link href={'/search'}>
+                    <Button variant='outlined' color='inherit'>Search</Button>
+                </Link>
+            </li>
+            
+            {userData 
+            ? 
+            <li className={styles.li_nav}>
+                <Link href={`/account/${userData.ID}`}>
+                    <Button variant='outlined' color='inherit'>Profile</Button>
+                </Link>
+            </li>
+            : null}
 
-            <Link href={'/sign-up'}>
-                <Button variant='contained' color='success'>Sign Up</Button>
-            </Link>
-            <Link href={'/search'}>
-                <Button variant='outlined' color='info'>Search</Button>
-            </Link>
-        </div>
+            <li className={styles.li_nav}>
+                <Link href={'/about'}>
+                    <Button variant='outlined' color='inherit'>About</Button>
+                </Link>
+            </li>
+        </ul>
     )
 }
 
