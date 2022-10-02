@@ -8,6 +8,7 @@ import { UserData } from '../../utils/checkUser';
 import {api} from '../../utils/keys'
 import { useRecoilValue } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
+import LikedArtworks from '../../components/LikedArtworks';
 
  const userReq = async (id: string): Promise<UserData | undefined> => {
         const res = await fetch(`http://${api}/users`, {
@@ -44,16 +45,17 @@ const Login: NextPage = () => {
 
     return (
         <Grid container spacing={2}>
-            <Grid sm={4} md={4} lg={4}></Grid>
-            <Grid sm={4} md={4} lg={4}>
+            <Grid xs={4} sm={4} md={4} lg={4}></Grid>
+            <Grid xs={8} sm={8} md={8} lg={8}>
 
 
                 <Box sx={{margin: 'auto'}}>
                    {user ? 
 
                    <div>
-                        <div>{user.username}</div>
-                        <div>{user.email}</div>
+                        <h1>Welcome {user.username} !</h1>
+                        <h2>Recently Liked</h2>
+                        <LikedArtworks />
                    </div>
                    
                    : <Loading />}
@@ -61,7 +63,6 @@ const Login: NextPage = () => {
 
 
             </Grid>
-            <Grid sm={4} md={4} lg={4}></Grid>
         </Grid>
     )
 }

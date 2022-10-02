@@ -6,6 +6,7 @@ import { debounce } from 'lodash';
 import List from '../components/List'
 import Loading from '../components/Loading';
 import {api} from '../utils/keys'
+import { preRenderSearch } from '../utils/preRenderFuncs';
 
 
 export type SearchResults = {
@@ -41,6 +42,14 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
         })
     }
 
+    const renderCols = (): number => {
+
+        if (window.innerWidth <= 600) return 1 
+        if (window.innerWidth >= 601 && window.innerWidth <= 770) return 3
+
+        return 4
+    }
+
     useEffect(() => {
         fetchData(input)
     }, [input])
@@ -55,8 +64,8 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
 
     return (
         <Grid container spacing={2}>
-            <Grid md={1}></Grid>
-            <Grid md={10}>
+            <Grid xs={1} sm={1} md={1}></Grid>
+            <Grid xs={10} sm={10} md={10}>
                 <h1>Search</h1>
                 <div className="search">
                     <TextField
@@ -68,14 +77,14 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
                     />
                 </div>
                 <Grid container>
-                    <Grid md={1}></Grid>
-                    <Grid md={10}>
-                       {results && sent ? <List results={results} /> : <Loading />}
+                    <Grid xs={1} sm={1} md={1}></Grid>
+                    <Grid xs={10} sm={10} md={10}>
+                       {results && sent ? <List results={results} cols={renderCols()} /> : <Loading />}
                     </Grid>
-                    <Grid md={1}></Grid>
+                    <Grid xs={1} sm={1} md={1}></Grid>
                 </Grid>
                 </Grid>
-            <Grid md={1}></Grid>
+            <Grid xs={1} sm={1} md={1}></Grid>
         </Grid>
     )
 }
@@ -83,10 +92,7 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
 export default Search
 
 export async function getStaticProps() {
-    const data = await fetch(`http://${api}/search/van%20gogh`).then(async res => {
-                const response: SearchResults = await res.json()
-                return response
-        })
+    const data = await preRenderSearch()
 
     return {
         props: { data }

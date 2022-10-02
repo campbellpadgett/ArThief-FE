@@ -7,7 +7,7 @@ const Login: NextPage = () => {
     return (
         <Grid container spacing={2}>
             <Grid xs={2} sm={2} md={2} lg={2}></Grid>
-            <Grid xs={2} sm={8} md={8} lg={6}>
+            <Grid xs={10} sm={10} md={10} lg={8}>
                 <Box sx={{margin: 'auto'}}>
                     <h1>About</h1>
                     <p>
@@ -38,7 +38,6 @@ const Login: NextPage = () => {
                     <FavortieIcon color='error' />
                 </Box>
             </Grid>
-            <Grid xs={2} sm={2} md={2} lg={4}></Grid>
         </Grid>
     )
 }

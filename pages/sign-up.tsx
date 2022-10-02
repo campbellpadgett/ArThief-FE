@@ -29,14 +29,14 @@ const SignUp: NextPage = () => {
 
     return (
         <Grid container spacing={2}>
-            <Grid sm={4} md={4} lg={4}></Grid>
-            <Grid sm={4} md={4} lg={4}>
+            <Grid xs={1} sm={4} md={4} lg={4}></Grid>
+            <Grid xs={10} sm={4} md={4} lg={4}>
                 <Box sx={{margin: 'auto'}}>
                     <h1>Create Account</h1>
                     <SignUpForm usernames={usernames} />
                 </Box>
             </Grid>
-            <Grid sm={4} md={4} lg={4}></Grid>
+            <Grid xs={1} sm={4} md={4} lg={4}></Grid>
         </Grid>
     )
 }

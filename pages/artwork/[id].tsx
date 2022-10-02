@@ -1,4 +1,3 @@
-
 import { useRouter } from "next/router";
 import Grid from '@mui/material/Unstable_Grid2';
 import Card from '@mui/material/Card';
@@ -7,7 +6,7 @@ import LikeButton from "../../components/LikeButton";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
 import { Dispatch, SetStateAction } from 'react'
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import {api} from '../../utils/keys'
 
 const rowSX = {
@@ -75,8 +74,8 @@ const Artwork: NextPage = () => {
         <div>
             <br />
             <Grid container spacing={1}>
-                <Grid md={2} />
-                <Grid md={8}>
+                <Grid xs={2} sm={2} md={2} />
+                <Grid xs={8} sm={8} md={8}>
                     <Card sx={{ maxWidth: '40%', margin: 'auto' }}>
                         <CardMedia
                         component="img"
@@ -88,14 +87,14 @@ const Artwork: NextPage = () => {
 
                     {user && <LikeButton likeData={likeData} likeHandler={likeHandler} likeReq={likeReq} />}
                 </Grid>
-                <Grid md={2} />
+                <Grid xs={2} sm={2} md={2} />
             </Grid>
 
             <br />
 
             <Grid container spacing={1}>
-                <Grid md={2} />
-                <Grid md={8} sx={rowSX}>
+                <Grid xs={2} sm={2} md={2} />
+                <Grid xs={8} sm={8} md={8} sx={rowSX}>
                 <h1>{query.Title}</h1>
                 <h2>By {query.Artist_Name}</h2>
                 <p>Released in {query.DOR}</p>
