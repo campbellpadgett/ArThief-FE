@@ -11,9 +11,6 @@ import styles from '../styles/Navbar.module.css'
 
 
 
-
-
-
 const NavBar = () => {
 
     const [userData, setUserData] = useRecoilState(userDataAtom)

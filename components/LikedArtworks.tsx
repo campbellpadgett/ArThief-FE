@@ -3,14 +3,13 @@ import ImageList from '@mui/material/ImageList';
 import ArtCard from '../components/ArtCard';
 import { type SearchResults } from '../pages/search';
 
-interface ListProps {
-    results: SearchResults | undefined
-    cols: number
+interface LikedProps {
+    
 }
 
-const List = (props: ListProps) => {
+const LikedArtworks = (props: LikedProps) => {
 
-    if (props.results === undefined ) return <ul></ul>
+    // if (props.results === undefined ) return <ul></ul>
 
     const renderRows = (results: SearchResults) => {
         return results.map(result => {
@@ -23,10 +22,11 @@ const List = (props: ListProps) => {
     }
 
     return ( 
-        <ImageList cols={props.cols}>
-            {props.results !== null && renderRows(props.results)}
+        <ImageList cols={4}>
+            ...liked stuff here
+            {/* {props.results !== null && renderRows(props.results)} */}
         </ImageList>
     )
 }
 
-export default List
+export default LikedArtworks
