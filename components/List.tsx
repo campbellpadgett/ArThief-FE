@@ -1,12 +1,8 @@
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageList from '@mui/material/ImageList';
 import ArtCard from '../components/ArtCard';
-import { type SearchResults } from '../pages/search';
-
-interface ListProps {
-    results: SearchResults | undefined
-    cols: number
-}
+import { type SearchResults } from '../utils/interfaces';
+import {ListProps} from '../utils/interfaces'
 
 const List = (props: ListProps) => {
 

@@ -1,7 +1,7 @@
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageList from '@mui/material/ImageList';
 import ArtCard from '../components/ArtCard';
-import { type SearchResults } from '../pages/search';
+import { type SearchResults } from '../utils/interfaces';
 
 interface LikedProps {
     

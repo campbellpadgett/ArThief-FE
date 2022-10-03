@@ -2,19 +2,9 @@ import { Button, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useState, useMemo } from 'react';
 import { debounce } from 'lodash';
-import { TakenUsernames } from '../../pages/sign-up';
 import Router from 'next/router';
 import {api, local} from '../../utils/keys'
-
-interface FormProps {
-    usernames: TakenUsernames
-}
-
-interface SignUpData {
-    email: null | string
-    password: null | string
-    username: null | string 
-}
+import {FormProps, SignUpData} from '../../utils/interfaces'
 
 const SignUpForm = (props: FormProps) => {
 

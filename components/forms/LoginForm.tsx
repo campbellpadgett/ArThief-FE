@@ -5,12 +5,8 @@ import Router from 'next/router';
 import { useSetRecoilState } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
-import {api, local} from '../../utils/keys'
-
-interface LoginData {
-    password: null | string
-    username: null | string 
-}
+import {api} from '../../utils/keys'
+import { LoginData } from '../../utils/interfaces';
 
 const LoginForm = () => {
 

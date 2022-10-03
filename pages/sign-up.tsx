@@ -4,13 +4,7 @@ import SignUpForm from '../components/forms/SignUpForm';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import {api} from '../utils/keys'
-
-
-
-
-export interface TakenUsernames { 
-    [key: string]: boolean 
-}
+import { TakenUsernames } from '../utils/interfaces';
 
 const SignUp: NextPage = () => {
 

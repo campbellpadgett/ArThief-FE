@@ -1,17 +1,10 @@
 import FavortieIcon from '@mui/icons-material/Favorite'
 import FavoriteOutline from '@mui/icons-material/FavoriteBorderOutlined'
 import { Button } from '@mui/material'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { userDataAtom } from '../atoms/userAtoms'
-import { LikeData, LikeRequest } from '../pages/artwork/[id]'
-
-
-interface LikeButtonProps {
-    likeData: LikeData
-    likeHandler: (likedStatus: boolean, setStatus: Dispatch<SetStateAction<boolean>>, likeData: LikeData) => Promise<void>
-    likeReq: (ld: LikeData) => Promise<LikeRequest | undefined>
-}
+import { LikeButtonProps } from '../utils/interfaces'
 
 const LikeButton = (props: LikeButtonProps) => {
 

@@ -7,19 +7,7 @@ import List from '../components/List'
 import Loading from '../components/Loading';
 import {api} from '../utils/keys'
 import { preRenderSearch } from '../utils/preRenderFuncs';
-
-
-export type SearchResults = {
-    id: string
-    Title: string
-    Artist_Name: string
-    DOR: string
-    Description: string
-    Source: string
-    Abb: string
-    IMG: string
-    IMG_S: string | null 
-}[]
+import { type SearchResults } from '../utils/interfaces'
 
 const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) => {
 

@@ -5,22 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Link from 'next/link'
-
-export type SearchResult = {
-    id: string
-    Title: string
-    Artist_Name: string
-    DOR: string
-    Description: string
-    Source: string
-    Abb: string
-    IMG: string
-    IMG_S: string | null
-}
-
-interface ArtCardProps {
-    result: SearchResult
-}
+import {type SearchResult, ArtCardProps} from '../utils/interfaces'
 
 const provideImage = (result: SearchResult): string => {
     if (result.IMG_S !== null && result.IMG_S !== '') return result.IMG_S

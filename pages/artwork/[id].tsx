@@ -8,6 +8,7 @@ import { userDataAtom } from "../../atoms/userAtoms";
 import { Dispatch, SetStateAction } from 'react'
 import { NextPage } from "next";
 import {api} from '../../utils/keys'
+import { LikeData, LikeRequest } from "../../utils/interfaces";
 
 const rowSX = {
     padding: '2px',
@@ -18,19 +19,6 @@ const renderSource = (source: string, Abb: string) => {
     if (Abb === 'CHI') return `Courtesy of the ${source} from the Art Institute of Chicago`
     
     return `Courtesy of the ${source}`
-}
-
-export interface LikeData {
-    // item can be either artwork, curation, ot other entity
-    itemID: string | undefined
-    userID: number | undefined
-    likeStatus: boolean
-}
-
-export interface LikeRequest {
-    data: null | LikeData
-    liked: boolean
-    exist: boolean
 }
 
 const likeHandler = async (likedStatus: boolean, setStatus: Dispatch<SetStateAction<boolean>>, likeData: LikeData) => {
