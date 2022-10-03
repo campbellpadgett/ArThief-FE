@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { debounce } from 'lodash';
 import { TakenUsernames } from '../../pages/sign-up';
 import Router from 'next/router';
-import {api} from '../../utils/keys'
+import {api, local} from '../../utils/keys'
 
 interface FormProps {
     usernames: TakenUsernames
@@ -74,7 +74,7 @@ const SignUpForm = (props: FormProps) => {
             body: JSON.stringify(data)
         })
 
-        Router.push(`http://${api}/login`)
+        Router.push(`http://${local}/login`)
     }
 
     return (
