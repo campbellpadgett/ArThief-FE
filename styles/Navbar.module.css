@@ -9,3 +9,7 @@
     float: left;
     padding: 10px 12px;
 }
+
+.input {
+    padding-left: 0%;
+}

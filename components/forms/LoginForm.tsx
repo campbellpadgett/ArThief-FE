@@ -7,6 +7,7 @@ import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
 import {api} from '../../utils/keys'
 import { LoginData } from '../../utils/interfaces';
+import styles from '../../styles/Navbar.module.css'
 
 const LoginForm = () => {
 
@@ -50,21 +51,21 @@ const LoginForm = () => {
     return (
 
         <form onSubmit={loginHandler}>
-            <Grid container spacing={1}>
-                <Grid>
+            <Grid container spacing={2}>
+                <Grid xs={11} sm={11} md={6} lg={9} className={styles.input}>
                     <TextField
                     onChange={usernameHandler}
-                    sx={{width: '20vw'}}
+                    sx={{width: '100%'}}
                     id="outlined-required"
                     label={"Username"}
                     type="username"
                     required
                     />
                 </Grid>
-                <Grid>
+                <Grid xs={11} sm={11} md={6} lg={9} className={styles.input}>
                     <TextField
                     onChange={passwordHandler}
-                    sx={{width: '20vw'}}
+                    sx={{width: '100%'}}
                     id="outlined-password-input"
                     label={"Password"}
                     type="password"
@@ -78,12 +79,12 @@ const LoginForm = () => {
                 </Grid>
                 }
             </Grid>
-
             <br />
 
             <Button type="submit" variant='contained' color='primary'>
                 Login
             </Button>
+
         </form>
 
     )    
