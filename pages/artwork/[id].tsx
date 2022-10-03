@@ -6,7 +6,7 @@ import LikeButton from "../../components/LikeButton";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
 import { Dispatch, SetStateAction } from 'react'
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import {api} from '../../utils/keys'
 
 const rowSX = {
