@@ -46,7 +46,7 @@ const LoginForm = () => {
 
         if (res.status === 200) {
             setUserData(userData)
-            Router.push(`http://${local}/search`)
+            Router.push(`search`)
         }
         if (res.status === 404 || res.status === 400) setError(true)
     }
