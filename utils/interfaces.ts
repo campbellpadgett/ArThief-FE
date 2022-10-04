@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { UserData } from './checkUser'
 
 export interface LikeData {
     // item can be either artwork, curation, ot other entity
@@ -69,4 +70,8 @@ export interface SignUpData {
 export interface LoginData {
     password: null | string
     username: null | string 
+}
+
+export interface NavProps {
+    userData: UserData | null
 }
