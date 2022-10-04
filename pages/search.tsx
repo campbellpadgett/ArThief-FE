@@ -62,6 +62,7 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
                         variant="outlined"
                         fullWidth
                         label="Search"
+                        defaultValue={'van Gogh'}
                     />
                 </div>
                 <Grid container>

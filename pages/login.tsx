@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Grid from '@mui/material/Unstable_Grid2';
-import { Box } from '@mui/material';
 import LoginForm from '../components/forms/LoginForm'
 
 
