@@ -6,8 +6,8 @@ import FavortieIcon from '@mui/icons-material/Favorite'
 const Login: NextPage = () => {
     return (
         <Grid container spacing={2}>
-            <Grid xs={2} sm={2} md={2} lg={2}></Grid>
-            <Grid xs={10} sm={10} md={10} lg={8}>
+            <Grid xs={1} sm={1} md={1} lg={2}></Grid>
+            <Grid xs={10} sm={10} md={10} lg={6}>
                 <Box sx={{margin: 'auto'}}>
                     <h1>About</h1>
                     <p>
@@ -38,6 +38,7 @@ const Login: NextPage = () => {
                     <FavortieIcon color='error' />
                 </Box>
             </Grid>
+            <Grid xs={1} sm={1} md={1} lg={2}></Grid>
         </Grid>
     )
 }

@@ -10,7 +10,7 @@ import styles from '../../styles/Navbar.module.css'
 const NavBar = () => {
 
     const [userData, setUserData] = useRecoilState(userDataAtom)
-    const [screenSize, setScreenSize] = useState<number>(0)
+    const [screenSize, setScreenSize] = useState<number>(576)
     
     const resize = () => setScreenSize(window.innerWidth)
     const handleResize = useMemo(() => debounce(resize, 100), [])
