@@ -1,19 +1,14 @@
 import '../styles/globals.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
 import {RecoilRoot} from 'recoil'
 import type { AppProps } from 'next/app'
-import NavBar from '../components/NavBar'
-
-const queryClient = new QueryClient()
+import NavBar from '../components/Navbar/NavBar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <NavBar />
         <Component {...pageProps} />
       </RecoilRoot>
-    </QueryClientProvider>
   )
 }
 
