@@ -68,13 +68,14 @@ const SignUpForm = (props: FormProps) => {
     }
 
     return (
+    
 
         <form onSubmit={submitHandler}>
             <Grid container spacing={1}>
-                <Grid>
+                <Grid xs={11} sm={11} md={6} lg={9}>
                     <TextField
                     onChange={deboucedEmailValidator}
-                    sx={{width: '20vw'}}
+                    sx={{width: '100%'}}
                     error={invalidEmail}
                     id="outlined-required"
                     label={invalidEmail ? "Email is invalid" : "Email"}
@@ -82,10 +83,10 @@ const SignUpForm = (props: FormProps) => {
                     required
                     />
                 </Grid>
-                <Grid>
+                <Grid xs={11} sm={11} md={6} lg={9}>
                     <TextField
                     onChange={deboucedUsernameValidator}
-                    sx={{width: '20vw'}}
+                    sx={{width: '100%'}}
                     error={invalidUsername}
                     id="outlined-required"
                     label={invalidUsername ? "That username is taken" : "Username (4 Character Min)"}
@@ -93,10 +94,10 @@ const SignUpForm = (props: FormProps) => {
                     required
                     />
                 </Grid>
-                <Grid>
+                <Grid xs={11} sm={11} md={6} lg={9}>
                     <TextField
                     onChange={deboucedPwdValidator}
-                    sx={{width: '20vw'}}
+                    sx={{width: '100%'}}
                     error={invalidPassword}
                     id="outlined-password-input"
                     label={invalidPassword ? "Not enough charecters" : "Password"}

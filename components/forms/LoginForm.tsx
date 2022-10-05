@@ -48,8 +48,7 @@ const LoginForm = () => {
         if (res.status >= 400 && res.status <= 499) {
             setError({error: true, errorMsg: "Username or Password don't match"})
         } else if (res.status >= 500) {
-            // if we are this line, then the header error exists, so we type assert as string below
-            setError({error: true, errorMsg: "An Error occured, please try again later"})
+            setError({error: true, errorMsg: "An error occured, please try again later"})
         }
     }
 
