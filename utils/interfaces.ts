@@ -14,20 +14,8 @@ export interface LikeRequest {
     exist: boolean
 }
 
-export type SearchResults = {
-    id: string
-    Title: string
-    Artist_Name: string
-    DOR: string
-    Description: string
-    Source: string
-    Abb: string
-    IMG: string
-    IMG_S: string | null 
-}[]
-
 export interface ListProps {
-    results: SearchResults | undefined
+    results: SearchResult[] | undefined
     cols: number
 }
 
@@ -37,7 +25,20 @@ export interface LikeButtonProps {
     likeReq: (ld: LikeData) => Promise<LikeRequest | undefined>
 }
 
-export type SearchResult = {
+export interface SearchResult {
+    id: string
+    Title: string
+    Artist_Name: string
+    DOR: string
+    Description: string
+    Source: string
+    Abb: string
+    IMG: string
+    IMG_S: string | null
+}
+
+// useQuery.query needs a type instead of an interface. 
+export type QuerySearchResult = {
     id: string
     Title: string
     Artist_Name: string
@@ -50,7 +51,7 @@ export type SearchResult = {
 }
 
 export interface ArtCardProps {
-    result: SearchResult
+    result: QuerySearchResult
 }
 
 export interface TakenUsernames { 

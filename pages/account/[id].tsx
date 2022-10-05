@@ -55,7 +55,7 @@ const Login: NextPage = () => {
                    <div>
                         <h1>Welcome {user.username} !</h1>
                         <h2>Recently Liked</h2>
-                        <LikedArtworks />
+                        <LikedArtworks userID={user.ID} />
                    </div>
                    
                    : <Loading />}

@@ -7,12 +7,12 @@ import List from '../components/List'
 import Loading from '../components/Loading';
 import {api} from '../utils/keys'
 import { preRenderSearch } from '../utils/preRenderFuncs';
-import { type SearchResults } from '../utils/interfaces'
+import { SearchResult } from '../utils/interfaces'
 
-const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) => {
+const Search: NextPage<{data: SearchResult[]}> = ({data}: {data: SearchResult[]}) => {
 
     const [input, setInput] = useState<string | null>(null)
-    const [results, setResults] = useState<SearchResults | undefined>(undefined)
+    const [results, setResults] = useState<SearchResult[] | undefined>(undefined)
     const [sent, setSent] = useState(false)
 
     const fetchData = async (input: string | null) => {
@@ -23,7 +23,7 @@ const Search: NextPage<{data: SearchResults}> = ({data}: {data: SearchResults}) 
         }
 
         await fetch(`http://${api}/search/${input}`).then(async res => {
-                const response: SearchResults = await res.json()
+                const response: SearchResult[] = await res.json()
     
                 setResults(response)
                 setSent(true)

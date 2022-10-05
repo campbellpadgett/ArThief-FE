@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Link from 'next/link'
-import {type SearchResult, ArtCardProps} from '../utils/interfaces'
+import {SearchResult, ArtCardProps} from '../utils/interfaces'
 
 const provideImage = (result: SearchResult): string => {
     if (result.IMG_S !== null && result.IMG_S !== '') return result.IMG_S
@@ -14,7 +14,6 @@ const provideImage = (result: SearchResult): string => {
 }
 
 const ArtCard = (props: ArtCardProps) => {
-
     return (
         <>
             <Box sx={{maxWidth: 400, padding: 1}}>
