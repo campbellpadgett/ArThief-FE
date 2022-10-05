@@ -9,6 +9,13 @@ import {api} from '../utils/keys'
 import { preRenderSearch } from '../utils/preRenderFuncs';
 import { SearchResult } from '../utils/interfaces'
 
+ export const renderCols = (window: number): number => {
+        if (window <= 600) return 1 
+        if (window >= 601 && window <= 770) return 3
+
+        return 4
+    }
+
 const Search: NextPage<{data: SearchResult[]}> = ({data}: {data: SearchResult[]}) => {
 
     const [input, setInput] = useState<string | null>(null)
@@ -28,14 +35,6 @@ const Search: NextPage<{data: SearchResult[]}> = ({data}: {data: SearchResult[]}
                 setResults(response)
                 setSent(true)
         })
-    }
-
-    const renderCols = (): number => {
-
-        if (window.innerWidth <= 600) return 1 
-        if (window.innerWidth >= 601 && window.innerWidth <= 770) return 3
-
-        return 4
     }
 
     useEffect(() => {
@@ -68,7 +67,7 @@ const Search: NextPage<{data: SearchResult[]}> = ({data}: {data: SearchResult[]}
                 <Grid container>
                     <Grid xs={1} sm={1} md={1}></Grid>
                     <Grid xs={10} sm={10} md={10}>
-                       {results && sent ? <List results={results} cols={renderCols()} /> : <Loading />}
+                       {results && sent ? <List results={results} cols={renderCols(window.innerWidth)} /> : <Loading />}
                     </Grid>
                     <Grid xs={1} sm={1} md={1}></Grid>
                 </Grid>
