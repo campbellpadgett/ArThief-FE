@@ -75,3 +75,8 @@ export interface LoginData {
 export interface NavProps {
     userData: UserData | null
 }
+
+export interface RequestError {
+    error: boolean
+    errorMsg: string
+}

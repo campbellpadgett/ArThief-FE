@@ -6,14 +6,14 @@ import { useSetRecoilState } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
 import {api} from '../../utils/keys'
-import { LoginData } from '../../utils/interfaces';
+import { LoginData, RequestError } from '../../utils/interfaces';
 import styles from '../../styles/Navbar.module.css'
 
 const LoginForm = () => {
 
     const [data, setData] = useState<LoginData>({username: null, password: null})
     const setUserData = useSetRecoilState(userDataAtom)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState<RequestError>({error: false, errorMsg: ''})
 
     const usernameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const username = e.target.value
@@ -45,7 +45,12 @@ const LoginForm = () => {
             setUserData(userData)
             Router.push(`search`)
         }
-        if (res.status >= 400 || res.headers.get('error') === 'true') setError(true)
+        if (res.status >= 400 && res.status <= 499) {
+            setError({error: true, errorMsg: "Username or Password don't match"})
+        } else if (res.status >= 500) {
+            // if we are this line, then the header error exists, so we type assert as string below
+            setError({error: true, errorMsg: "An Error occured, please try again later"})
+        }
     }
 
     return (
@@ -73,9 +78,9 @@ const LoginForm = () => {
                     />
                 </Grid>
 
-                {error && 
+                {error.error && 
                 <Grid>
-                    <Alert severity="error">Username or Password wrong</Alert>
+                    <Alert severity="error">{error.errorMsg}</Alert>
                 </Grid>
                 }
             </Grid>
