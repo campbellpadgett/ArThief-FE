@@ -16,6 +16,7 @@ const NavBar = () => {
     const handleResize = useMemo(() => debounce(resize, 100), [])
 
     useEffect(() => {
+        setScreenSize(window.innerWidth)
 
         if (userData === null) {
             (async () => {
@@ -24,7 +25,7 @@ const NavBar = () => {
             })()
         }
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [userData])
 
