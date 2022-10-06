@@ -29,7 +29,6 @@ const NavBar = () => {
         return () => window.removeEventListener('resize', handleResize)
     }, [userData])
 
-
     return (
         <div className={styles.ul_nav}>
             {screenSize >= 576 ? <LgNavbar userData={userData} /> : <SmNavBar userData={userData} />}

@@ -25,6 +25,15 @@ const LgNavbar = (props: NavProps) => {
                         <Button variant='outlined' color='inherit'>Login</Button> 
                     </Link> }
                 </li>
+
+                {props.userData
+                ?
+                <li className={styles.li_nav}>
+                    <Link href={`/account/${props.userData.ID.toString()}`}>
+                        <Button variant='outlined' color='primary'>Account</Button>
+                    </Link>
+                </li>
+                : null}
     
                 <li className={styles.li_nav}>
                     <Link href={'/search'}>

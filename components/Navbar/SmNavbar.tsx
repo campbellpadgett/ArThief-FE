@@ -64,6 +64,15 @@ const SmNavBar = (props: NavProps) => {
                         </Link>
                     </MenuItem>}
 
+                    {props.userData
+                    ?
+                    <MenuItem onClick={closeHandler}>
+                        <Link href={`/account/${props.userData.ID.toString()}`}>
+                            <Button variant='outlined' color='primary'>Account</Button>
+                        </Link>
+                    </MenuItem>
+                    : null}
+
                     <MenuItem onClick={closeHandler}>
                         <Link href={'/search'}>
                             <Button variant='outlined' color='inherit'>Search</Button>
