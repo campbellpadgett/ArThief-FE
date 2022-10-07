@@ -1,4 +1,4 @@
-import { LikeData } from "./interfaces"
+import { CurationButtonData, CurationReq, LikeData, LikeRequest } from "./interfaces"
 import { Dispatch, SetStateAction } from "react"
 import { api } from "./keys"
 
@@ -28,6 +28,18 @@ export const likeHandler = async (likedStatus: boolean, setStatus: Dispatch<SetS
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(ld)
     })
+}
+
+export const likeReq = async (ld: LikeData): Promise<LikeRequest | undefined> => {
+    const res = await fetch(`http://${api}/likes`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(ld)
+    }) 
+    
+    const currentLikeData: LikeRequest = await res.json()
+    return currentLikeData
 }
 
 export const imgSize = (window: number) => {

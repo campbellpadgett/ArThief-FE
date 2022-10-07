@@ -7,30 +7,17 @@ import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
 import { useState, useEffect, useMemo } from 'react'
 import { GetServerSideProps, NextPage } from "next";
-import {api} from '../../utils/keys'
-import { LikeData, LikeRequest, SearchResult } from "../../utils/interfaces";
+import { LikeData, SearchResult } from "../../utils/interfaces";
 import { debounce } from "lodash";
 import { preRenderArtwork } from "../../utils/preRenderFuncs";
-import { rowSX, renderSource, likeHandler, imgSize } from '../../utils/artworkMethods'
+import { rowSX, renderSource, likeHandler, imgSize, likeReq } from '../../utils/artworkMethods'
 
 const Artwork: NextPage<{data: SearchResult}> = ({data}: {data: SearchResult}) => {
-    const router = useRouter();
-    const query = router.query;
-    const artworkID = query.id as string | undefined
+    const router = useRouter()
+    const artworkID = router.query.id as string | undefined
+
     const user = useRecoilValue(userDataAtom)
     const likeData: LikeData = {itemID: artworkID, userID: user?.ID, likeStatus: false}
-
-    const likeReq = async (ld: LikeData): Promise<LikeRequest | undefined> => {
-        const res = await fetch(`http://${api}/likes`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(ld)
-        }) 
-        
-        const currentLikeData: LikeRequest = await res.json()
-        return currentLikeData
-    }
 
     const [screenSize, setScreenSize] = useState<number>(576)
     const resize = () => setScreenSize(window.innerWidth)
