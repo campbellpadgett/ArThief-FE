@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Grid from '@mui/material/Unstable_Grid2';
 import { Box } from '@mui/material';
 import FavortieIcon from '@mui/icons-material/Favorite'
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Login: NextPage = () => {
     return (
@@ -44,7 +45,7 @@ const Login: NextPage = () => {
                     <FavortieIcon color='error' />
 
                     <p>
-                        You can find the github repos here: <a href='https://github.com/campbellpadgett'>https://github.com/campbellpadgett</a>
+                        You can find the Github repos here: <a href='https://github.com/campbellpadgett'><GitHubIcon fontSize='large' /></a>
                     </p>
                 </Box>
             </Grid>

@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import LikeButton from "../../components/LikeButton";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
-import { Dispatch, SetStateAction, useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { GetServerSideProps, NextPage } from "next";
 import {api} from '../../utils/keys'
 import { LikeData, LikeRequest, SearchResult } from "../../utils/interfaces";
