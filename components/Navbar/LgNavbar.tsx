@@ -41,14 +41,14 @@ const LgNavbar = (props: NavProps) => {
                     </Link>
                 </li>
                 
-                {props.userData 
+                {/* {props.userData 
                 ? 
                 <li className={styles.li_nav}>
                     <Link href={`/account/${props.userData.ID}`}>
                         <Button variant='outlined' color='inherit'>Profile</Button>
                     </Link>
                 </li>
-                : null}
+                : null} */}
     
                 <li className={styles.li_nav}>
                     <Link href={'/about'}>

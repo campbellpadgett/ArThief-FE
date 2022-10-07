@@ -16,7 +16,7 @@ const provideImage = (result: SearchResult): string => {
 const ArtCard = (props: ArtCardProps) => {
     return (
         <>
-            <Box sx={{maxWidth: 400, padding: 1}}>
+            <Box sx={{maxWidth: props.cardSize, padding: 1}}>
                 <Link href={{pathname:`artwork/${props.result.id}`, query: props.result}}>
                     <Card>
                         <CardActionArea>

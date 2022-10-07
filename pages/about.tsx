@@ -12,7 +12,13 @@ const Login: NextPage = () => {
                     <h1>About</h1>
                     <p>
                         All artwork here is thanks to the Chicago Art Institute,
-                        The Metropolitan Art Meuseam, and the Rijksmuseum 
+                        The Metropolitan Art Meuseam, and the Rijksmuseum. By using their 
+                        public APIs, Artwork and metadata related to it was processd into a database.
+                    </p>
+
+                    <p>
+                        This site allows for searches, likes, and eventually curations from that database. 
+                        Users can see a list of their liked images on their acount page. 
                     </p>
 
                     <h1>Account</h1>
@@ -36,6 +42,10 @@ const Login: NextPage = () => {
                         Once liked, you can go to your account and find a curation of your liked artwork.
                     </p>
                     <FavortieIcon color='error' />
+
+                    <p>
+                        You can find the github repos here: <a href='https://github.com/campbellpadgett'>https://github.com/campbellpadgett</a>
+                    </p>
                 </Box>
             </Grid>
             <Grid xs={1} sm={1} md={1} lg={2}></Grid>

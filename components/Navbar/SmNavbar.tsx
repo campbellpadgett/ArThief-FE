@@ -79,14 +79,11 @@ const SmNavBar = (props: NavProps) => {
                         </Link>
                     </MenuItem>
                         
-                    {props.userData 
-                    ? 
-                    <MenuItem onClick={closeHandler}>
+                    {/* <MenuItem onClick={closeHandler}>
                         <Link href={`/account/${props.userData.ID}`}>
-                            <Button variant='outlined' color='inherit'>Profile</Button>
+                            <Button variant='outlined' color='inherit'>Profiles</Button>
                         </Link>
-                    </MenuItem>
-                    : null}
+                    </MenuItem> */}
 
                     <MenuItem onClick={closeHandler}>
                         <Link href={'/about'}>

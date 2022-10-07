@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
 import { UserData } from './checkUser'
 
 export interface LikeData {
@@ -12,17 +11,6 @@ export interface LikeRequest {
     data: null | LikeData
     liked: boolean
     exist: boolean
-}
-
-export interface ListProps {
-    results: SearchResult[] | undefined
-    cols: number
-}
-
-export interface LikeButtonProps {
-    likeData: LikeData
-    likeHandler: (likedStatus: boolean, setStatus: Dispatch<SetStateAction<boolean>>, likeData: LikeData) => Promise<void>
-    likeReq: (ld: LikeData) => Promise<LikeRequest | undefined>
 }
 
 export interface SearchResult {
@@ -52,14 +40,11 @@ export type QuerySearchResult = {
 
 export interface ArtCardProps {
     result: QuerySearchResult
+    cardSize: number
 }
 
 export interface TakenUsernames { 
     [key: string]: boolean 
-}
-
-export interface FormProps {
-    usernames: TakenUsernames
 }
 
 export interface SignUpData {
@@ -80,4 +65,9 @@ export interface NavProps {
 export interface RequestError {
     error: boolean
     errorMsg: string
+}
+
+export interface LikedListRes {
+    liked_artwork: SearchResult[] | undefined
+    page: number
 }

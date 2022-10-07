@@ -4,7 +4,11 @@ import { useState, useMemo } from 'react';
 import { debounce } from 'lodash';
 import Router from 'next/router';
 import {api, local} from '../../utils/keys'
-import {FormProps, SignUpData} from '../../utils/interfaces'
+import { SignUpData, TakenUsernames } from '../../utils/interfaces'
+
+interface FormProps {
+    usernames: TakenUsernames
+}
 
 const SignUpForm = (props: FormProps) => {
 

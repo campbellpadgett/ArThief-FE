@@ -2,7 +2,11 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageList from '@mui/material/ImageList';
 import ArtCard from '../components/ArtCard';
 import { SearchResult } from '../utils/interfaces';
-import {ListProps} from '../utils/interfaces'
+
+interface ListProps {
+    results: SearchResult[] | undefined
+    cols: number
+}
 
 const List = (props: ListProps) => {
 
@@ -12,7 +16,7 @@ const List = (props: ListProps) => {
         return results.map(result => {
             return ( 
                 <ImageListItem key={result.id}>
-                    <ArtCard result={result} key={result.id}/>
+                    <ArtCard result={result} cardSize={400} key={result.id}/>
                 </ImageListItem>
             )
         })

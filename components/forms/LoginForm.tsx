@@ -6,7 +6,7 @@ import { useSetRecoilState } from 'recoil';
 import { userDataAtom } from '../../atoms/userAtoms';
 import { UserData } from '../../utils/checkUser';
 import {api} from '../../utils/keys'
-import { LoginData, RequestError } from '../../utils/interfaces';
+import { LoginData, RequestError, TakenUsernames } from '../../utils/interfaces';
 import styles from '../../styles/Navbar.module.css'
 
 const LoginForm = () => {

@@ -4,7 +4,14 @@ import { Button } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { userDataAtom } from '../atoms/userAtoms'
-import { LikeButtonProps } from '../utils/interfaces'
+import { LikeData, LikeRequest } from '../utils/interfaces'
+import { Dispatch, SetStateAction } from 'react'
+
+interface LikeButtonProps {
+    likeData: LikeData
+    likeHandler: (likedStatus: boolean, setStatus: Dispatch<SetStateAction<boolean>>, likeData: LikeData) => Promise<void>
+    likeReq: (ld: LikeData) => Promise<LikeRequest | undefined>
+}
 
 const LikeButton = (props: LikeButtonProps) => {
 
