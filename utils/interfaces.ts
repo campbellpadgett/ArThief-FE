@@ -6,11 +6,24 @@ export interface LikeData {
     userID: number | undefined
     likeStatus: boolean
 }
-
 export interface LikeRequest {
     data: null | LikeData
     liked: boolean
     exist: boolean
+}
+
+export interface CurationButtonData {
+    CurationID: number
+    UserID: number
+    addedStatus: boolean
+}
+
+export interface CurationReq {
+    UserID: number
+    Name: string
+    CurationID: number
+    ArtworkID: number
+    Order: number
 }
 
 export interface SearchResult {

@@ -11,40 +11,7 @@ import {api} from '../../utils/keys'
 import { LikeData, LikeRequest, SearchResult } from "../../utils/interfaces";
 import { debounce } from "lodash";
 import { preRenderArtwork } from "../../utils/preRenderFuncs";
-
-const rowSX = {
-    padding: '2px',
-    borderTop: '5px solid black' 
-}
-
-const renderSource = (source: string, Abb: string) => {
-    if (Abb === 'CHI') return `Courtesy of the ${source} from the Art Institute of Chicago`
-    
-    return `Courtesy of the ${source}`
-}
-
-const likeHandler = async (likedStatus: boolean, setStatus: Dispatch<SetStateAction<boolean>>, likeData: LikeData) => {
-    setStatus(!likedStatus)
-
-    const ld: LikeData = {
-        itemID: likeData.itemID,
-        userID: likeData.userID,
-        likeStatus: !likedStatus
-    }
-
-    const res = await fetch(`http://${api}/like`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(ld)
-        })
-}
-
-const imgSize = (window: number) => {
-    if (window >= 1000) return '50%'
-    if (window <= 999 && window > 425) return '75%'
-    if (window <= 424) return '100%'
-}
+import { rowSX, renderSource, likeHandler, imgSize } from '../../utils/artworkMethods'
 
 const Artwork: NextPage<{data: SearchResult}> = ({data}: {data: SearchResult}) => {
     const router = useRouter();
