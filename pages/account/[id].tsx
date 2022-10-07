@@ -23,6 +23,7 @@ const userReq = async (id: string): Promise<UserData | undefined> => {
     return currentUsereData
 }
 
+
 const Account: NextPage<{data: LikedListRes}> = ({data}: {data: LikedListRes}) => {
 
     const router = useRouter();
@@ -55,13 +56,13 @@ const Account: NextPage<{data: LikedListRes}> = ({data}: {data: LikedListRes}) =
                         <div>
                             <h1>Welcome {user.username} !</h1>
                             <h2>Recently Liked</h2>
-                            <LikedArtworks data={data} />
+                            <LikedArtworks data={data} userID={userID} />
                         </div>
                     :
                         <div>
                             <h1>{user.username}'s Acccount</h1>
                             <h2>Recently Liked</h2>
-                            <LikedArtworks data={data} />
+                            <LikedArtworks data={data} userID={userID} />
                         </div>
                     }
                 </Box>}
@@ -77,7 +78,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const id = context.params?.id
     const res = await getLikedArtwork(id as string, 0)
-    console.log('res', res.liked_artwork)
 
     return {
         props: {data: res}

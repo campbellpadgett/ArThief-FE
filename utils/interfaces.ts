@@ -70,4 +70,5 @@ export interface RequestError {
 export interface LikedListRes {
     liked_artwork: SearchResult[] | undefined
     page: number
+    count: number
 }
