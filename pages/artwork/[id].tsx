@@ -6,10 +6,11 @@ import LikeButton from "../../components/LikeButton";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../../atoms/userAtoms";
 import { Dispatch, SetStateAction, useState, useEffect, useMemo } from 'react'
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import {api} from '../../utils/keys'
-import { LikeData, LikeRequest } from "../../utils/interfaces";
+import { LikeData, LikeRequest, SearchResult } from "../../utils/interfaces";
 import { debounce } from "lodash";
+import { preRenderArtwork } from "../../utils/preRenderFuncs";
 
 const rowSX = {
     padding: '2px',
@@ -45,7 +46,7 @@ const imgSize = (window: number) => {
     if (window <= 424) return '100%'
 }
 
-const Artwork: NextPage = () => {
+const Artwork: NextPage<{data: SearchResult}> = ({data}: {data: SearchResult}) => {
     const router = useRouter();
     const query = router.query;
     const artworkID = query.id as string | undefined
@@ -85,8 +86,8 @@ const Artwork: NextPage = () => {
                         <CardMedia
                         component="img"
                         // @ts-ignore
-                        image={query.IMG}
-                        alt={`image titled: ${query.Title}`}
+                        image={data.IMG}
+                        alt={`image titled: ${data.Title}`}
                         />
                     </Card>
 
@@ -100,11 +101,11 @@ const Artwork: NextPage = () => {
             <Grid container spacing={1}>
                 <Grid xs={2} sm={2} md={2} />
                 <Grid xs={8} sm={8} md={8} sx={rowSX}>
-                <h1>{query.Title}</h1>
-                <h2>By {query.Artist_Name}</h2>
-                <p>Released in {query.DOR}</p>
+                <h1>{data.Title}</h1>
+                <h2>By {data.Artist_Name}</h2>
+                <p>Released in {data.DOR}</p>
                 <p>{
-                    renderSource(query.Source as string, query.Abb as string)
+                    renderSource(data.Source as string, data.Abb as string)
                 }</p>
                 </Grid>
                 <Grid md={2} />
@@ -114,3 +115,13 @@ const Artwork: NextPage = () => {
 }
 
 export default Artwork
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+
+    const id = context.params?.id
+    const res = await preRenderArtwork(id as string)
+
+    return {
+        props: {data: res}
+    }
+}
