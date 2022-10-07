@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Grid from '@mui/material/Unstable_Grid2';
 import SignUpForm from '../components/forms/SignUpForm';
-import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import {api} from '../utils/keys'
 import { TakenUsernames } from '../utils/interfaces';
