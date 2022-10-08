@@ -11,8 +11,10 @@ import { LikeData, SearchResult } from "../../utils/interfaces";
 import { debounce } from "lodash";
 import { preRenderArtwork } from "../../utils/preRenderFuncs";
 import { rowSX, renderSource, likeHandler, imgSize, likeReq } from '../../utils/artworkMethods'
+import { ContactPhoneOutlined } from "@mui/icons-material";
 
 const Artwork: NextPage<{data: SearchResult}> = ({data}: {data: SearchResult}) => {
+    console.log('data', data)
     const router = useRouter()
     const artworkID = router.query.id as string | undefined
 
@@ -74,6 +76,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const id = context.params?.id
     const res = await preRenderArtwork(id as string)
+
+    console.log(res)
 
     return {
         props: {data: res}
