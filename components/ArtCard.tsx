@@ -18,7 +18,7 @@ const ArtCard = (props: ArtCardProps) => {
     return (
         <>
             <Box sx={{maxWidth: props.cardSize, padding: 1}}>
-                <Link href={{pathname:`http://${local}/artwork/${props.result.id}`}}>
+                <Link href={{pathname:`artwork/${props.result.id}`}}>
                     <Card>
                         <CardActionArea>
                             <CardContent>
