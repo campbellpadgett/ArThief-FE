@@ -47,7 +47,7 @@ const LikedArtworks = (props: LikedProps) => {
         return results.map(result => {
             return ( 
                 <ImageListItem key={result.id}>
-                    <ArtCard result={result} cardSize={400} key={result.id}/>
+                    <ArtCard result={result} cardSize={400} realtiveURL={false} key={result.id}/>
                 </ImageListItem>
             )
         })

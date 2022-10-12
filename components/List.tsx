@@ -16,7 +16,7 @@ const List = (props: ListProps) => {
         return results.map(result => {
             return ( 
                 <ImageListItem key={result.id}>
-                    <ArtCard result={result} cardSize={400} key={result.id}/>
+                    <ArtCard result={result} realtiveURL={true} cardSize={400} key={result.id}/>
                 </ImageListItem>
             )
         })

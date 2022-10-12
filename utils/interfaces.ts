@@ -54,6 +54,7 @@ export type QuerySearchResult = {
 export interface ArtCardProps {
     result: QuerySearchResult
     cardSize: number
+    realtiveURL: boolean
 }
 
 export interface TakenUsernames { 

@@ -15,10 +15,13 @@ const provideImage = (result: SearchResult): string => {
 }
 
 const ArtCard = (props: ArtCardProps) => {
+
+    const url = props.realtiveURL ? `artwork/${props.result.id}` : `http://${local}/artwork/${props.result.id}`
+
     return (
         <>
             <Box sx={{maxWidth: props.cardSize, padding: 1}}>
-                <Link href={{pathname:`artwork/${props.result.id}`}}>
+                <Link href={{pathname: url}}>
                     <Card>
                         <CardActionArea>
                             <CardContent>
