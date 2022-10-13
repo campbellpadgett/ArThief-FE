@@ -51,7 +51,7 @@ const LgNavbar = (props: NavProps) => {
                 : null} */}
     
                 <li className={styles.li_nav}>
-                    <Link href={'/about'}>
+                    <Link href={'/'}>
                         <Button variant='outlined' color='inherit'>About</Button>
                     </Link>
                 </li>

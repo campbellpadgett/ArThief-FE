@@ -86,7 +86,7 @@ const SmNavBar = (props: NavProps) => {
                     </MenuItem> */}
 
                     <MenuItem onClick={closeHandler}>
-                        <Link href={'/about'}>
+                        <Link href={'/'}>
                             <Button variant='outlined' color='inherit'>About</Button>
                          </Link>
                     </MenuItem>
