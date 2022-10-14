@@ -20,7 +20,8 @@ const Home: NextPage = () => {
 
                     <p>
                         This site allows for searches, likes, and eventually curations from that database. 
-                        Users can see a list of their liked images on their acount page. 
+                        Users can see a list of their liked images on their acount page. The curation feature will be
+                        available in the coming weeks 
                     </p>
 
                     <h1>Account</h1>
