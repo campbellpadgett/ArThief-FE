@@ -1,3 +1,4 @@
+import {Alert} from '@mui/material';
 import { Button, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useState, useMemo } from 'react';
@@ -5,6 +6,7 @@ import { debounce } from 'lodash';
 import Router from 'next/router';
 import {api, local} from '../../utils/keys'
 import { SignUpData, TakenUsernames } from '../../utils/interfaces'
+import { RequestError } from '../../utils/interfaces';
 
 interface FormProps {
     usernames: TakenUsernames
@@ -16,6 +18,7 @@ const SignUpForm = (props: FormProps) => {
     const [invalidPassword, setInvalidPassword] = useState(false)
     const [invalidUsername, setInvalidUsername] = useState(false)
     const [data, setData] = useState<SignUpData>({email: null, username: null, password: null})
+    const [error, setError] = useState<RequestError>({error: false, errorMsg: ''})
 
     const checkEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         const email = e.target.value
@@ -62,13 +65,19 @@ const SignUpForm = (props: FormProps) => {
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        await fetch(`http://${api}/sign-up`, {
+        const res = await fetch(`http://${api}/sign-up`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         })
 
-        Router.push(`http://${local}/login`)
+        const resp = await res.json()
+
+        if (resp.status >= 400) {
+            setError({error: true, errorMsg: resp.body})
+        } else if (resp.status === 201) {
+            Router.push(`http://${local}/login`)
+        }
     }
 
     return (
@@ -112,6 +121,13 @@ const SignUpForm = (props: FormProps) => {
             </Grid>
 
             <br />
+
+            {error.error && 
+                <Grid>
+                    <Alert severity="error">{error.errorMsg}</Alert>
+                    <br />
+                </Grid>
+            }
 
             <Button type="submit" variant='contained' color='success'>
                 Submit
