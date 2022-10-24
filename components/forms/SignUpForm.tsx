@@ -75,9 +75,7 @@ const SignUpForm = (props: FormProps) => {
 
         if (resp.status >= 400) {
             setError({error: true, errorMsg: resp.body})
-        } else if (resp.status === 201) {
-            Router.push(`http://${local}/login`)
-        }
+        } else Router.push(`http://${local}/login`)
     }
 
     return (
